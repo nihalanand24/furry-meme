@@ -1,0 +1,16 @@
+// Create App page with main card for current weather div
+// create smaller cards for 5-day forecast
+
+// Get user geolocation using FreeGeoIP API
+
+// Send geolocation as parameter to OpenWeather API
+
+// Get Current weather data and store in variables
+
+// populate DOM using weather data retrieved from API
+
+// STRETCH GOALS
+
+// Create search form for user to input other locations
+// search location name on openweather API
+// display weather results on main app page
