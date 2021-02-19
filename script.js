@@ -11,7 +11,7 @@ const coordinates = fetch('https://freegeoip.app/json/')
                 app.lat = coordinates[0];
                 app.lon = coordinates[1];
 
-                const openWeatherUrl = new URL('http://api.openweathermap.org/data/2.5/weather');
+                const openWeatherUrl = new URL('https://api.openweathermap.org/data/2.5/weather');
                 openWeatherUrl.search = new URLSearchParams({
                     lat: app.lat,
                     lon: app.lon,
