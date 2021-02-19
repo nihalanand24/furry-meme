@@ -6,9 +6,34 @@ Friendly Weather App
 
 // console.log(fetch('https://ipinfo.io/'));
 
-fetch('https://freegeoip.app/json/')
+const app = {};
+
+app.pEl = document.querySelector('p');
+app.h2El = document.querySelector('h2');
+
+const coordinates = fetch('https://freegeoip.app/json/')
     .then(res => res.json())
-    .then(jsonRes => console.log(jsonRes));
+        .then(jsonRes => [jsonRes.latitude, jsonRes.longitude])
+            .then(coordinates => {
+                app.lat = coordinates[0];
+                app.lon = coordinates[1];
+
+                const openWeatherUrl = new URL('http://api.openweathermap.org/data/2.5/weather');
+                openWeatherUrl.search = new URLSearchParams({
+                    lat: app.lat,
+                    lon: app.lon,
+                    appid: 'f5daff7dc1836c7459dbcc4ca6644537'
+                });
+                fetch(openWeatherUrl).then(res => res.json())
+                    .then(jsonRes => {
+                        app.h2El.textContent = `The current temperature in ${jsonRes.name} is ${(jsonRes.main.temp - 273.15).toFixed()}° Celcius.`
+                        app.pEl.textContent = `Your GPS Coordinates are ${app.lat}, ${app.lon}.`
+                    });
+            });
+
+
+
+
 
 
 // const url = new URL('http://proxy.hackeryou.com');
