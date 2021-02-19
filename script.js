@@ -7,7 +7,8 @@ Friendly Weather App
 // console.log(fetch('https://ipinfo.io/'));
 
 fetch('https://freegeoip.app/json/')
-    .then(res => console.log(res));
+    .then(res => res.json())
+    .then(jsonRes => console.log(jsonRes));
 
 
 // const url = new URL('http://proxy.hackeryou.com');
